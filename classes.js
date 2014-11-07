@@ -56,14 +56,14 @@ console.log("This should be 3: ", get_attr(f2, 'boop'));
 var Bar = make_class ({
   "bam": 8,
   "add2bam": function(args) {
-    self = args[0];
-    num2add = args[1];
+    var self = args[0];
+    var num2add = args[1];
     return get_attr(self, 'bam') + num2add;
   }
 });
 
 var b = instantiate_class(Bar);
-bound_method = get_attr(b, "add2bam");
+var bound_method = get_attr(b, "add2bam");
 
 console.log("This should be 13: ", bound_method([5]));
 set_attr(b, 'bam', 9);
@@ -71,8 +71,8 @@ console.log("This should be 14: ", bound_method([5]));
 
 var Baz = make_class ({
   "init": function(args) {
-    self = args[0];
-    num = args[1];
+    var self = args[0];
+    var num = args[1];
     set_attr(self, 'yay', num);
   }
 });
