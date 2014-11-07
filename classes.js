@@ -1,7 +1,7 @@
-function make_cls(attrs) {
-  var new_cls = {};
-  new_cls['attrs'] = attrs;
-  return new_cls;
+function make_class(attrs) {
+  var new_class = {};
+  new_class['attrs'] = attrs;
+  return new_class;
 }
 
 function instantiate_class(cls) {
@@ -24,7 +24,7 @@ function set_attr(obj, attr_name, value) {
 }
 
 
-var Foo = make_cls({boop: 3});
+var Foo = make_class({boop: 3});
 
 var f = instantiate_class(Foo);
 var f2 = instantiate_class(Foo);
