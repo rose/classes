@@ -4,10 +4,14 @@ function make_class(attrs) {
   return new_class;
 }
 
-function instantiate_class(cls) {
+function instantiate_class(cls, args) {
   var new_obj = {};
   new_obj['class'] = cls;
   new_obj['attrs'] = {};
+  var init = get_attr(new_obj, 'init');
+  if (typeof(init) == 'function') {
+    init(args);
+  }
   return new_obj;
 }
 
@@ -64,3 +68,17 @@ bound_method = get_attr(b, "add2bam");
 console.log("This should be 13: ", bound_method([5]));
 set_attr(b, 'bam', 9);
 console.log("This should be 14: ", bound_method([5]));
+
+var Baz = make_class ({
+  "init": function(args) {
+    self = args[0];
+    num = args[1];
+    set_attr(self, 'yay', num);
+  }
+});
+
+var baz = instantiate_class(Baz, [42]);
+
+console.log("This should be 42: ", get_attr(baz, 'yay'))
+
+
